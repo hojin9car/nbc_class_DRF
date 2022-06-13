@@ -1,0 +1,83 @@
+<!-- templates/tweet/home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container timeline-container">
+    <div class="row">
+        <!-- 왼쪽 컬럼 -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+
+                </div>
+            </div>
+        </div>
+        <!-- 오른 쪽 컬럼-->
+        <div class="col-md-7">
+            <!-- 글을 작성 하는 곳 -->
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    {% if user.is_authenticated %}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <form method="post" action="/api/write/">
+                                        {% csrf_token %}
+                                        <div class="form-group mb-2">
+                                            <input class="form-control" name="drf-title" type="text" placeholder="제목">
+                                            <p></p>
+                                            <textarea class="form-control" style="resize: none; height: 150px" name='drf-content'
+                                                      id="drf-content"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" style="float:right;">작성하기</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <hr>
+            <!-- 작성 된 글이 나오는 곳 -->
+            <div class="row">
+                <div class="col-md-12">
+                    {% for card in article %}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h5 class="mt-0">제목: {{ card.title }}</h5>
+                                    <p>{{ card.content }}
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h5 class="mt-0">Media heading</h5>
+                                    <p>Will you do the same for me? It's time to face the music I'm no longer your
+                                        muse.
+                                        Heard it's
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+{% endblock %}

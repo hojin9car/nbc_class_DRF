@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    로그인
+{% endblock %}
+
+{% block script %}
+<!--<script>-->
+<!--    function login_click() {-->
+<!--        var formData = new FormData($('#form')[0]);-->
+
+<!--        $.ajax({-->
+<!--            type: 'POST',-->
+<!--            url: '/api/login/',-->
+<!--            data: formData,-->
+<!--            cache: false,-->
+<!--            contentType: false,-->
+<!--            processData: false,-->
+<!--            success: function (data) {-->
+<!--                var jsonObj = JSON.parse(data)-->
+<!--                alert("hi")-->
+<!--            },-->
+<!--            error: function () {-->
+<!--                alert("실패")-->
+<!--            }-->
+<!--        })-->
+<!--    }-->
+
+<!--</script>-->
+
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="wrap">
+            <h2 class="title-center"> 로그인</h2>
+            <form id="form" class="form-area" method="post" action="/api/login/">
+                {% csrf_token %}
+                <div class="form-group mt-2 mb-2">
+                    <label for="username">이름</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                    <label for="password">비밀번호</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <hr>
+                <div style="float: right">
+                    <button id="btn_login" type="submit" class="btn btn-primary">로그인</button>
+                    <a href="/signup" class="btn btn-secondary">회원가입 페이지로</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}
