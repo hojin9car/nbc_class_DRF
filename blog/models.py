@@ -19,3 +19,9 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+
+class Comment(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    author = models.ForeignKey(User,  on_delete=models.CASCADE)
+    writing_time = models.TimeField()
+    content = models.TextField("댓글 내용")

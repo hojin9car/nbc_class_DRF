@@ -1,11 +1,8 @@
 from rest_framework.renderers import serializers
-from .models import Article
+from .models import Article as ArticleModel
 
 
-class ContentSerializer(serializers.Serializer):
-
-    Article.id = serializers.CharField()
-    Article.title = serializers.CharField()
-    Article.content = serializers.CharField()
-    Article.author_id = serializers.CharField()
-
+class ContentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ArticleModel
+        fields = ['title', 'content', 'author_id']

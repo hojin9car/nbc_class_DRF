@@ -146,7 +146,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # settings.py
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
-      'rest_framework.renderers.TemplateHTMLRenderer'
+      # 'rest_framework.renderers.TemplateHTMLRenderer'
+      'rest_framework.renderers.JSONRenderer'
     ],
     'DEFAULT_PERMISSION_CLASSES': [  # 기본적인 view 접근 권한 지정
         'rest_framework.permissions.AllowAny'
